@@ -23,6 +23,8 @@ module.exports = function(RED) {
 
     if (this.bindToNode) {
       io = new Server(RED.server, this.options);
+      io.serveClient(node.sendClient);
+      io.path(node.path);
     } else {
       io = new Server(this.options);
       io.serveClient(node.sendClient);
